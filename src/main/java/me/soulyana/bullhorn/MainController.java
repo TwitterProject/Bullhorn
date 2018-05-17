@@ -51,7 +51,7 @@ public class MainController {
             return "index";
         }
         AppUser appUser = users.findByUsername(auth.getName());
-        post.setAppUser(appUser);
+//        post.addUser(appUser);
         posts.save(post);
         return "redirect:/";
     }

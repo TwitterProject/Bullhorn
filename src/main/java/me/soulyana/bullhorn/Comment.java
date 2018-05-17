@@ -3,6 +3,8 @@ package me.soulyana.bullhorn;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Comment {
@@ -14,7 +16,7 @@ public class Comment {
     @Lob
     private String comment;
 
-    private Date postedAt;
+    private String postedAt;
 
     @ManyToOne
     private Post post;
@@ -25,6 +27,22 @@ public class Comment {
 
     public Comment() {
 
+    }
+
+    public Comment(String comment, String postedAt) {
+        this.comment = comment;
+        this.postedAt = postedAt;
+        this.appUser = appUser;
+//        this.appUser = new HashSet<>();
+
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public long getId() {
@@ -43,11 +61,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Date getPostedAt() {
+    public String getPostedAt() {
         return postedAt;
     }
 
-    public void setPostedAt(Date postedAt) {
+    public void setPostedAt(String postedAt) {
         this.postedAt = postedAt;
     }
 
@@ -59,11 +77,9 @@ public class Comment {
         this.post = post;
     }
 
-    public AppUser getAppUser() {
-        return appUser;
-    }
 
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
-    }
+//    //add Method for adding users
+//    public void addUser(AppUser aUser) {
+//        this.appUser.add(aUser);
+//    }
 }

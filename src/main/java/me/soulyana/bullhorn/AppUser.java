@@ -45,6 +45,13 @@ public class AppUser implements Serializable{
     @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private Set<AppRole> roles;
 
+    public AppUser(String username, String password, @NotNull String displayName, @NotNull String displayImg) {
+        this.username = username;
+        this.password = password;
+        this.displayName = displayName;
+        this.displayImg = displayImg;
+    }
+
     public AppUser() {
         this.roles = new HashSet<>();
         this.followingUsers = new HashSet<>();

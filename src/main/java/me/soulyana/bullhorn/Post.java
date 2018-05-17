@@ -15,7 +15,7 @@ public class Post {
     @Lob
     private String message;
 
-    private Date postedAt;
+    private String postedAt;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "appUser_id")
@@ -23,6 +23,13 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     public Set<Comment> comments;
+
+    public Post(java.lang.String message, java.lang.String postedAt) {
+        this.message = message;
+        this.postedAt = postedAt;
+        this.appUser = appUser;
+
+    }
 
     public Post() {
         this.comments = new HashSet<>();
@@ -44,21 +51,14 @@ public class Post {
         this.message = message;
     }
 
-    public Date getPostedAt() {
+    public String getPostedAt() {
         return postedAt;
     }
 
-    public void setPostedAt(Date postedAt) {
+    public void setPostedAt(String postedAt) {
         this.postedAt = postedAt;
     }
 
-    public AppUser getAppUser() {
-        return appUser;
-    }
-
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
-    }
 
     public Set<Comment> getComments() {
         return comments;
@@ -67,4 +67,10 @@ public class Post {
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
+
+//    //add Method for adding users
+//    public void addUser(AppUser aUser) {
+//        this.appUser.add(aUser);
+//    }
+
 }
